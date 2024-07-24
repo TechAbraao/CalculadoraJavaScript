@@ -33,15 +33,11 @@
     color: white;
     font-weight: bold;
 }
-.result {
-    background-color: none;
-    width: 35.5%;
-    margin-bottom: 20px;
-    background-color: red;
-}
-.result p {
-    font-size: 70px;
-    font-weight: bold;
-    color: white;
-    float: right;
+.result input {
+    height: 100px;
+    width: 485px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-size: 75px;
+    color: black;
 }
