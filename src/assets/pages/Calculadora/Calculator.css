@@ -39,5 +39,9 @@
     margin-bottom: 15px;
     border-radius: 5px;
     font-size: 75px;
-    color: black;
+    font-weight: bolder;
+    color: white;
+    padding-left: 15px;
+    background-color: #344454;
+    outline: none;
 }
