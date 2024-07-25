@@ -1,7 +1,7 @@
 <h1 align="center">Calculadora Multifuncional</h1>
 <div align="center">
   <br>
-  <img src="https://cdn-icons-png.flaticon.com/512/10310/10310245.png" alt="Logo ampliada" width="330">
+  <img src="https://cdn-icons-png.freepik.com/512/13568/13568829.png" alt="Logo ampliada" width="300">
   <br>
 </div>
 <div>
