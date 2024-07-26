@@ -11,8 +11,8 @@ const BottonsCalculator = () => {
    // const [isResult, setIsResult] = useState<number>(0);
    const [selectedNumber, setSelectNumber] = useState<number | string>("");
    const [oldSelectNumber, oldSetSelectNumber] = useState<number | string>("");
-   const [isResult, setIsResult] = useState<number | string>();
-   // const [selectedOperation, setSelectOperation] = useState<number>(0);
+   // const [isResult, setIsResult] = useState<number | string>();
+   const [selectedOperation, setSelectOperation] = useState<string>("");
    // Funções
    const handleNumber = (index: number) => {
       if (selectedNumber === "0") {
@@ -60,18 +60,38 @@ const BottonsCalculator = () => {
       }
    };
    //
-   const operatorSelect = (indexOperator: string) => {
-      if (
-         indexOperator == "/" ||
-         indexOperator == "*" ||
-         indexOperator == "-" ||
-         indexOperator == "+"
-      ) {
-         switch (indexOperator) {
-            case "/":
-               oldSetSelectNumber(selectedNumber);
-               setSelectNumber("")
+   const operatorResult = (index: number) => {
+      if (index === 18) {
+         switch (selectedOperation) {
+            case "adic":
+               setSelectNumber(
+                  (parseFloat(selectedNumber) + parseFloat(oldSelectNumber)).toString()
+               );
+               setSelectOperation("");
+               break;
+            case "subt":
+               setSelectNumber(
+                  (parseFloat(selectedNumber) - parseFloat(oldSelectNumber)).toString()
+               );
+               setSelectOperation("");
+               break;
+            case "mult":
+               setSelectNumber(
+                  (parseFloat(selectedNumber) * parseFloat(oldSelectNumber)).toString()
+               );
+               setSelectOperation("");
+               break;
+            case "divi":
+               setSelectNumber(
+                  (parseFloat(selectedNumber) / parseFloat(oldSelectNumber)).toString()
+               );
+               setSelectOperation("");
+               break;
+            default:
+               console.log("Operação não realizada. Verifique o erro.");
          }
+      } else {
+         console.log("Errado");
       }
    };
    //
@@ -80,18 +100,27 @@ const BottonsCalculator = () => {
          switch (index) {
             case 3:
                console.log("Case 3: divisão");
-               setSelectNumber(
-                  parseFloat((oldSelectNumber / selectedNumber).toFixed(2))
-               );
+               setSelectOperation("divi"); // divi de divisão
+               oldSetSelectNumber(selectedNumber);
+               setSelectNumber("");
                break;
             case 7:
                console.log("Case 7: multiplicação");
+               setSelectOperation("mult"); // mult de multiplicação
+               oldSetSelectNumber(selectedNumber);
+               setSelectNumber("");
                break;
             case 11:
                console.log("Caso 11: subtração");
+               setSelectOperation("subt"); // subt de subtração
+               oldSetSelectNumber(selectedNumber);
+               setSelectNumber("");
                break;
             case 15:
                console.log("Case 15: adição");
+               setSelectOperation("adic"); // adic de adição
+               oldSetSelectNumber(selectedNumber);
+               setSelectNumber("");
                break;
             default:
                console.log("Case indeterminado.");
@@ -155,7 +184,7 @@ const BottonsCalculator = () => {
                      changePorc(index);
                      handleComma(index);
                      operatorCalculator(index);
-                     operatorSelect(item.operationSelect);
+                     operatorResult(index);
                   }}
                >
                   <ButtonIcon symbol={item.operationSymbol} />
