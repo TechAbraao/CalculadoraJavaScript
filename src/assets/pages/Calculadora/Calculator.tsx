@@ -8,10 +8,9 @@ import { useState } from "react";
 
 const BottonsCalculator = () => {
    //
-   // const [isResult, setIsResult] = useState<number>(0);
    const [selectedNumber, setSelectNumber] = useState<number | string>("");
    const [oldSelectNumber, oldSetSelectNumber] = useState<number | string>("");
-   // const [isResult, setIsResult] = useState<number | string>();
+   const [op, setOp] = useState<React.ReactNode>("")
    const [selectedOperation, setSelectOperation] = useState<string>("");
    // Funções
    const handleNumber = (index: number) => {
@@ -65,25 +64,37 @@ const BottonsCalculator = () => {
          switch (selectedOperation) {
             case "adic":
                setSelectNumber(
-                  (parseFloat(selectedNumber) + parseFloat(oldSelectNumber)).toString()
+                  (
+                     parseFloat(oldSelectNumber.toString()) +
+                     parseFloat(selectedNumber.toString())
+                  ).toString()
                );
                setSelectOperation("");
                break;
             case "subt":
                setSelectNumber(
-                  (parseFloat(selectedNumber) - parseFloat(oldSelectNumber)).toString()
+                  (
+                     parseFloat(oldSelectNumber.toString()) -
+                     parseFloat(selectedNumber.toString())
+                  ).toString()
                );
                setSelectOperation("");
                break;
             case "mult":
                setSelectNumber(
-                  (parseFloat(selectedNumber) * parseFloat(oldSelectNumber)).toString()
+                  (
+                     parseFloat(oldSelectNumber.toString()) *
+                     parseFloat(selectedNumber.toString())
+                  ).toString()
                );
                setSelectOperation("");
                break;
             case "divi":
                setSelectNumber(
-                  (parseFloat(selectedNumber) / parseFloat(oldSelectNumber)).toString()
+                  (
+                     parseFloat(oldSelectNumber.toString()) /
+                     parseFloat(selectedNumber.toString())
+                  ).toString()
                );
                setSelectOperation("");
                break;
@@ -197,6 +208,8 @@ const BottonsCalculator = () => {
 //
 type ResultProps = {
    selectedNumber: string | number;
+   oldSelectNumber: string | number;
+   selectedOperation: string;
 };
 const Result = ({ selectedNumber }: ResultProps) => {
    //

@@ -33,7 +33,7 @@
     color: white;
     font-weight: bold;
 }
-.result input {
+.result > input {
     height: 100px;
     width: 485px;
     margin-bottom: 15px;
@@ -44,4 +44,11 @@
     padding-left: 15px;
     background-color: #344454;
     outline: none;
+}
+.result > p {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 15px;
+    color: white;
+    font-weight: semibold;
 }
