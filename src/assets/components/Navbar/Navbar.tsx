@@ -1,6 +1,7 @@
 //
 import { Calculator, Thermometer, X, Timer, DollarSign } from "lucide-react";
 import "./Navbar.css";
+import BottonIcon from "../BottonIcon/ButtonIcon";
 //
 const TextNavbar = () => {
    return (
@@ -55,13 +56,14 @@ const IconsNavbar = () => {
                {dadosIconsNavbar.map((itens) => (
                   <li key={itens.index} className="navbarUlLi">
                      <button
-                        className="navbarButton"
+                        
                         style={{
-                           backgroundColor: itens.index >= 5 ? "#ED5555" : "",
-                           cursor: itens.index >= 5 ? "notAllowed" : "",
+                           backgroundColor: itens.index >= 5 ? "#ED5555" : undefined,
+                           cursor: itens.index >= 5 ? "not-allowed" : undefined,
+                           border: itens.index >= 5 ? "none" : undefined,
                         }}
                      >
-                        {itens.icon}
+                        {<BottonIcon symbol={itens.icon}/>}
                      </button>
                   </li>
                ))}

@@ -14,9 +14,6 @@ const BottonsCalculator = () => {
    const [isVerified, setIsVerified] = useState<boolean>(true);
    // const [selectedOperation, setSelectOperation] = useState<string>("");
    // Funções
-   const verificaIndex = (index: number) => {
-      console.log(`Index: ${index}`);
-   };
    const handleNumber = (index: number, numberItem: number) => {
       if (
          index === 4 ||
@@ -159,7 +156,6 @@ const BottonsCalculator = () => {
                      changePorc(index);
                      handleComma(index);
                      opSelect(index);
-                     // verificaIndex(index);
                   }}
                >
                   <ButtonIcon symbol={item.operationSymbol} />
