@@ -11,7 +11,6 @@ const BottonsCalculator = () => {
    const [selectedNumber, setSelectNumber] = useState<number | string>("");
    const [oldSelectNumber, oldSetSelectNumber] = useState<number | string>("");
    const [op, setOp] = useState<React.ReactNode>("");
-   const [isVerified, setIsVerified] = useState<boolean>(true);
    // const [selectedOperation, setSelectOperation] = useState<string>("");
    // Funções
    const handleNumber = (index: number, numberItem: number) => {
@@ -70,6 +69,20 @@ const BottonsCalculator = () => {
       }
    };
    // Fazer a calculadora funcionar aqui
+   const finishOp = (index: number) => {
+      if (index === 18) {
+         //
+         switch (op) {
+            case "":
+               //
+               break;
+         }
+         //
+      } else {
+         //
+      }
+   }
+   //
    const opSelect = (index: number) => {
       if (index === 3 || index === 7 || index === 11 || index === 15) {
          // oldSetSelectNumber(selectedNumber);
@@ -92,7 +105,6 @@ const BottonsCalculator = () => {
                break;
             case 15:
                setOp("+");
-
                oldSetSelectNumber(selectedNumber);
                setSelectNumber("");
                break;
@@ -139,11 +151,6 @@ const BottonsCalculator = () => {
    //
    return (
       <div className="bottonsCalculator">
-         <div className="operationsView">
-            <p>{oldSelectNumber}</p>
-            <p>{op}</p>
-            <p>{selectedNumber}</p>
-         </div>
          <Result selectedNumber={selectedNumber} />
          <ul>
             {dataCalculator.map((item, index) => (
@@ -156,6 +163,7 @@ const BottonsCalculator = () => {
                      changePorc(index);
                      handleComma(index);
                      opSelect(index);
+                     finishOp(index)
                   }}
                >
                   <ButtonIcon symbol={item.operationSymbol} />
