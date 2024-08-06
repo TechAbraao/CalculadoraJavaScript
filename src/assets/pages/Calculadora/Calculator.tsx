@@ -1,17 +1,13 @@
 // Ícones do Lucide.dev
 import { Percent, Asterisk, Plus, Minus, Equal, Divide } from "lucide-react";
-// Estilização com CSS padrão
-import "./Calculator.css";
-import Navbar from "../../components/Navbar/Navbar";
 import ButtonIcon from "../../components/BottonIcon/ButtonIcon";
 import { useState } from "react";
 
 const BottonsCalculator = () => {
    //
    const [selectedNumber, setSelectNumber] = useState<number | string>("");
-   const [oldSelectNumber, oldSetSelectNumber] = useState<number | string>("");
-   const [op, setOp] = useState<React.ReactNode>("");
-   // const [selectedOperation, setSelectOperation] = useState<string>("");
+   const [oldSelectNumber, oldSetSelectNumber] = useState<number | string>();
+   const [op, setOp] = useState<string>("");
    // Funções
    const handleNumber = (index: number, numberItem: number) => {
       if (
@@ -26,14 +22,16 @@ const BottonsCalculator = () => {
          index === 14 ||
          index === 16
       ) {
-         console.log(`Index do HandleNumber: ${index}`);
          setSelectNumber(selectedNumber.toString() + numberItem.toString());
       } else {
          //
       }
    };
    const clearAll = (index: string | number) => {
-      index === 0 && setSelectNumber(""), oldSetSelectNumber("")
+      if (index === 0) {
+         setSelectNumber("");
+         oldSetSelectNumber("");
+      }
    };
    //
    const changeSignal = (index: number) => {
@@ -72,36 +70,62 @@ const BottonsCalculator = () => {
    const finishOp = (index: number) => {
       if (index === 18) {
          //
+         const num1 = Number(oldSelectNumber);
+         const num2 = Number(selectedNumber);
+         //
          switch (op) {
-            case "":
+            case "+":
+               //
+               console.log("Adição selecionada.");
+               setSelectNumber(num1 + num2);
+               break;
+            case "-":
+               //
+               console.log("Subtração selecionada.");
+               setSelectNumber(num1 - num2);
+               break;
+            case "÷":
+               //
+               console.log("Divisão selecionada.");
+               setSelectNumber(num1 / num2);
+               break;
+            case "x":
+               //
+               console.log("Multiplicação selecionada.");
+               setSelectNumber(num1 * num2);
+               break;
+            default:
+               console.log("Nenhuma opção selecionada.");
                //
                break;
          }
          //
       } else {
          //
+         console.error("");
       }
-   }
+   };
    //
    const opSelect = (index: number) => {
       if (index === 3 || index === 7 || index === 11 || index === 15) {
-         // oldSetSelectNumber(selectedNumber);
-         // setSelectNumber("")
          switch (index) {
             case 3:
                setOp("÷");
                oldSetSelectNumber(selectedNumber);
                setSelectNumber("");
+               console.log("Divisão");
                break;
             case 7:
                setOp("x");
                oldSetSelectNumber(selectedNumber);
                setSelectNumber("");
+               console.log("Multiplicação");
                break;
             case 11:
                setOp("-");
                oldSetSelectNumber(selectedNumber);
                setSelectNumber("");
+               console.log("Subtração");
                break;
             case 15:
                setOp("+");
@@ -150,12 +174,13 @@ const BottonsCalculator = () => {
    ];
    //
    return (
-      <div className="bottonsCalculator">
+      <div className="h-alturaPersonalizada w-96 flex items-center justify-center flex-col border-4 border-backgroundUm">
          <Result selectedNumber={selectedNumber} />
-         <ul>
+         <ul className="flex items-center justify-center s380:gap-1.25 flex-wrap s380:w-90">
             {dataCalculator.map((item, index) => (
                <li
                   key={index}
+                  className={`${index == 16 ? "w-42" : ""}`}
                   onClick={() => {
                      handleNumber(index, item.number);
                      clearAll(index);
@@ -163,10 +188,10 @@ const BottonsCalculator = () => {
                      changePorc(index);
                      handleComma(index);
                      opSelect(index);
-                     finishOp(index)
+                     finishOp(index);
                   }}
                >
-                  <ButtonIcon symbol={item.operationSymbol} />
+                  <ButtonIcon symbol={item.operationSymbol} index={index} />
                </li>
             ))}
          </ul>
@@ -176,22 +201,15 @@ const BottonsCalculator = () => {
 //
 type ResultProps = {
    selectedNumber?: string | number;
-   oldSelectNumber?: string | number;
-   selectedOperation?: string;
 };
 const Result = ({ selectedNumber }: ResultProps) => {
    //
    return (
       <>
-         <div className="result">
-            <input
-               value={selectedNumber}
-               placeholder={
-                  // selectedNumber.length <= 12 ? selectedNumber : "Excedeu!"
-                  selectedNumber.toString()
-               }
-               readOnly
-            />
+         <div className="flex items-center justify-center border-4 border-backgroundUm s380:w-85 s380:h-16 s380:m-2 text-white">
+            <input 
+            className="w-full h-full bg-backgroundDois s380:text-5xl s380:p-3"
+            value={selectedNumber.toString().slice(0, 13)} readOnly />
          </div>
       </>
    );
@@ -201,8 +219,7 @@ const Result = ({ selectedNumber }: ResultProps) => {
 const Calculator = () => {
    return (
       <>
-         <section className="calculator">
-            <Navbar />
+         <section className="bg-backgroundDois w-full h-screen flex items-center justify-center">
             <BottonsCalculator />
          </section>
       </>

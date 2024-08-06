@@ -1,6 +1,5 @@
 //
 import { Calculator, Thermometer, X, Timer, DollarSign } from "lucide-react";
-import "./Navbar.css";
 import BottonIcon from "../BottonIcon/ButtonIcon";
 //
 const TextNavbar = () => {

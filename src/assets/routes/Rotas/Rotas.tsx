@@ -7,10 +7,13 @@ const Rotas = () => {
       <>
          <Router>
             <Routes>
-               <Route path="/calculadora" element={<Calculator />}></Route>
+               <Route path="/" element={<Calculator />}></Route>
             </Routes>
             <Routes>
-               <Route path="/converter-dinheiro" element={<ConverterDinheiro />}></Route>
+               <Route
+                  path="/converter-dinheiro"
+                  element={<ConverterDinheiro />}
+               ></Route>
             </Routes>
          </Router>
       </>
