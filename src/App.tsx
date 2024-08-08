@@ -1,12 +1,12 @@
 
 import "./App.css";
-import Rotas from "./assets/routes/Rotas/Rotas";
+import Calculator from "./assets/pages/Calculadora/Calculator";
 //
 function App() {
    return (
       <>
          <div className="App">
-            <Rotas />
+            <Calculator />
          </div>
       </>
    );
