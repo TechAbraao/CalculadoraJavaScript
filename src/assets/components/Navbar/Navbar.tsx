@@ -62,7 +62,7 @@ const IconsNavbar = () => {
                            border: itens.index >= 5 ? "none" : undefined,
                         }}
                      >
-                        {<BottonIcon symbol={itens.icon}/>}
+                        {<BottonIcon symbol={itens.icon} index={0}/>}
                      </button>
                   </li>
                ))}
