@@ -110,7 +110,7 @@ const BottonsCalculator = () => {
    ];
 
    return (
-      <div className="h-alturaPersonalizada w-96 flex items-center justify-center flex-col border-4 border-backgroundUm">
+      <div className="h-alturaPersonalizada w-90 flex items-center justify-center flex-col border-4 border-backgroundUm s380:h-98">
          <Result selectedNumber={selectedNumber} />
          <ul className="flex items-center justify-center s380:gap-1.25 flex-wrap s380:w-90">
             {dataCalculator.map((item, index) => (

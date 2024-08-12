@@ -17,6 +17,7 @@ export default {
             s680: "680px",
             s780: "780px",
             s880: "880px",
+            s830: "830px",
             s980: "980px",
             s1080: "1080px",
             s1180: "1180px",
@@ -31,6 +32,8 @@ export default {
           spacing: {
             18: "5rem",
             85: "21.3rem",
+            90: "22.8rem",
+            98: "37rem",
             1.25: "0.4rem",
             42: "166.5px",
             alturaPersonalizada: "65%"
